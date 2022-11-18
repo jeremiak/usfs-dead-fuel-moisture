@@ -14,11 +14,11 @@ jobs:
     - name: Scrape fuel moisture maps
       run: |-
         YESTERDAY=$(date --date=yesterday +"%Y-%m-%d")
-        OUTPUT_US_10_HOUR=$(echo "images/$YESTERDAY-fuel-moisture-us-10h.gif")
+        OUTPUT_US_10_HOUR=$(echo "images/$YESTERDAY-fuel-moisture-us-10h.png")
         curl https://www.wfas.net/images/firedanger/fm_10.png -o $OUTPUT_US_10_HOUR
-        OUTPUT_US_100_HOUR=$(echo "images/$YESTERDAY-fuel-moisture-us-100h.gif")
+        OUTPUT_US_100_HOUR=$(echo "images/$YESTERDAY-fuel-moisture-us-100h.png")
         curl https://www.wfas.net/images/firedanger/fm_100.png -o $OUTPUT_US_100_HOUR
-        OUTPUT_US_1000_HOUR=$(echo "images/$YESTERDAY-fuel-moisture-us-1000h.gif")
+        OUTPUT_US_1000_HOUR=$(echo "images/$YESTERDAY-fuel-moisture-us-1000h.png")
         curl https://www.wfas.net/images/firedanger/fm_1000.png -o $OUTPUT_US_1000_HOUR
     - name: Commit and push if it changed
       run: |-
