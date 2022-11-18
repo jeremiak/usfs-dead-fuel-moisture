@@ -16,16 +16,10 @@ jobs:
         YESTERDAY=$(date --date=yesterday +"%Y-%m-%d")
         OUTPUT_US_10_HOUR=$(echo "images/$YESTERDAY-fuel-moisture-us-10h.gif")
         curl https://www.wfas.net/images/firedanger/fm_10.png -o $OUTPUT_US_10_HOUR
-        OUTPUT_AK_10_HOUR=$(echo "images/$YESTERDAY-fuel-moisture-ak-10h.gif")
-        curl https://www.wfas.net/images/firedanger/alaska/fm_10.png -o $OUTPUT_AK_10_HOUR
         OUTPUT_US_100_HOUR=$(echo "images/$YESTERDAY-fuel-moisture-us-100h.gif")
         curl https://www.wfas.net/images/firedanger/fm_100.png -o $OUTPUT_US_100_HOUR
-        OUTPUT_AK_100_HOUR=$(echo "images/$YESTERDAY-fuel-moisture-ak-100h.gif")
-        curl https://www.wfas.net/images/firedanger/alaska/fm_100.png -o $OUTPUT_AK_100_HOUR
         OUTPUT_US_1000_HOUR=$(echo "images/$YESTERDAY-fuel-moisture-us-1000h.gif")
         curl https://www.wfas.net/images/firedanger/fm_1000.png -o $OUTPUT_US_1000_HOUR
-        OUTPUT_AK_1000_HOUR=$(echo "images/$YESTERDAY-fuel-moisture-ak-1000h.gif")
-        curl https://www.wfas.net/images/firedanger/alaska/fm_1000.png -o $OUTPUT_AK_1000_HOUR
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"
