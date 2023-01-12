@@ -20,11 +20,16 @@ jobs:
         curl https://www.wfas.net/images/firedanger/fm_100.png -o $OUTPUT_US_100_HOUR
         OUTPUT_US_1000_HOUR=$(echo "images/$YESTERDAY-fuel-moisture-us-1000h.png")
         curl https://www.wfas.net/images/firedanger/fm_1000.png -o $OUTPUT_US_1000_HOUR
+    - name: Make animations of anomaly-daily
+      uses: jruipinto/ImageMagick-action@v1
+      with: 
+        command: convert -loop 0 images/*-fuel-moisture-us-10h.png fuel-moisture-us-10h.png.gif
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"
         git config user.email "actions@users.noreply.github.com"
         git add images/*.png
+        git add fuel-moisture-us-10h.png.gif
         timestamp=$(date -u)
         git commit -m "Latest data: ${timestamp}" || exit 0
         git push
