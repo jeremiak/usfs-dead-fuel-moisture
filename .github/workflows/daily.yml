@@ -20,10 +20,18 @@ jobs:
         curl https://www.wfas.net/images/firedanger/fm_100.png -o $OUTPUT_US_100_HOUR
         OUTPUT_US_1000_HOUR=$(echo "images/$YESTERDAY-fuel-moisture-us-1000h.png")
         curl https://www.wfas.net/images/firedanger/fm_1000.png -o $OUTPUT_US_1000_HOUR
-    - name: Make animations of anomaly-daily
+    - name: Make animations of 10 hour
       uses: jruipinto/ImageMagick-action@v1
       with: 
         command: convert -loop 0 images/*-fuel-moisture-us-10h.png fuel-moisture-us-10h.png.gif
+    - name: Make animations of 100 hour
+      uses: jruipinto/ImageMagick-action@v1
+      with: 
+        command: convert -loop 0 images/*-fuel-moisture-us-100h.png fuel-moisture-us-100h.png.gif
+    - name: Make animations of 1000 hour
+      uses: jruipinto/ImageMagick-action@v1
+      with: 
+        command: convert -loop 0 images/*-fuel-moisture-us-1000h.png fuel-moisture-us-1000h.png.gif
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"
